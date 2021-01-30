@@ -1,47 +1,21 @@
-import { StatusBar } from "expo-status-bar";
-import { EvilIcons } from "@expo/vector-icons";
-
+import "react-native-gesture-handler";
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Text, TextInput, SafeAreaView, View } from "react-native";
+import HomeScreen from "./screens/HomeScreen";
 
-export default function App() {
+const Stack = createStackNavigator();
+function App() {
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        // borderWidth: 1,
-        margin: 15,
-        height: 50,
-        marginTop: 50,
-        backgroundColor: "gray",
-        borderRadius: 10,
-      }}
-    >
-      <EvilIcons
-        style={styles.iconStyle}
-        name="search"
-        size={45}
-        color="white"
-      />
-      <TextInput
-        style={styles.inputStyle}
-        placeholder="Search Restaurants"
-        placeholderTextColor="white"
-      />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  inputStyle: {
-    flex: 1,
-    fontSize: 18,
-    textAlign: "left",
-    color: "white",
-  },
+const styles = StyleSheet.create({});
 
-  iconStyle: {
-    alignSelf: "center",
-    marginHorizontal: 10,
-  },
-});
+export default App;
