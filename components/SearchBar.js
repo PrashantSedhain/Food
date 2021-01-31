@@ -1,7 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
-import { DefaultTheme } from "@react-navigation/native";
 
 const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
   return (

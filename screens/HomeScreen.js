@@ -9,44 +9,36 @@ const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
 
-  const data = [1, 2, 3, 4, 5, 6];
+  const [errorMessage, setErrorMessage] = useState("");
 
-  //   const searchApi = () => {
-  //     yelp
-  //       .get("/search", {
-  //         params: {
-  //           term: term,
-  //           limit: 50,
-  //           location: "san jose",
-  //         },
-  //       })
-  //       .then((response) => {
-  //           console.log(response)
-  //         setResults(response.data.businesses);
-  //       });
-  //   };
+  const data = [1, 2, 3, 4, 5, 6];
 
   const searchApi = async () => {
     try {
-      const { data } = await yelp.get("/search", {
-        params: { term, limit: 50, location: "san jose" },
+      const response = await yelp.get("/search", {
+        params: {
+          limit: 20,
+          term,
+          location: "san jose",
+        },
       });
-      setResults(data.businesses);
+      setResults(response.data.businesses);
     } catch (err) {
-      console.warn(err);
-      setResults([]);
+      setErrorMessage("Something went wrong");
     }
   };
+
   return (
     <ScrollView>
       <SearchBar
-        // onTermSubmit={() => searchApi()}
+        onTermSubmit={() => searchApi()}
         term={term}
         onTermChange={(newTerm) => {
           setTerm(newTerm);
         }}
       />
-
+      <Text>We found {results.length} restaurants.</Text>
+      <Text>{errorMessage}</Text>
       <TitleComponent title="Cheap Restaurants" />
       <ScrollView
         horizontal={true}
@@ -54,9 +46,18 @@ const HomeScreen = ({ navigation }) => {
         style={styles.viewStyle}
       >
         {data.map((item) => {
-          return <CardComponent key={item} />;
+          return (
+            <CardComponent
+              key={item}
+              navigate={() => {
+                navigation.navigate("DetailScreen");
+              }}
+            />
+          );
         })}
       </ScrollView>
+
+      <View style={styles.border}></View>
 
       <TitleComponent title="Expensive Restaurants" />
       <ScrollView
@@ -65,9 +66,17 @@ const HomeScreen = ({ navigation }) => {
         style={styles.viewStyle}
       >
         {data.map((item) => {
-          return <CardComponent key={item} />;
+          return (
+            <CardComponent
+              navigate={() => {
+                navigation.navigate("DetailScreen");
+              }}
+              key={item}
+            />
+          );
         })}
       </ScrollView>
+      <View style={styles.border}></View>
 
       <TitleComponent title="Luxury Restaurants" />
       <ScrollView
@@ -76,7 +85,14 @@ const HomeScreen = ({ navigation }) => {
         style={styles.viewStyle}
       >
         {data.map((item) => {
-          return <CardComponent key={item} />;
+          return (
+            <CardComponent
+              key={item}
+              navigate={() => {
+                navigation.navigate("DetailScreen");
+              }}
+            />
+          );
         })}
       </ScrollView>
     </ScrollView>
@@ -88,6 +104,11 @@ const styles = StyleSheet.create({
     height: 200,
     // borderWidth: 1,
     flexDirection: "row",
+  },
+
+  border: {
+    borderWidth: 0.8,
+    borderColor: "gray",
   },
 });
 

@@ -6,21 +6,22 @@ import {
   View,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from "react-native";
 // import { ScrollView } from "react-native-gesture-handler";
 
-const CardComponent = () => {
+const CardComponent = (props) => {
   return (
-    <SafeAreaView style={styles.cardStyle}>
+    <TouchableOpacity onPress={props.navigate} style={styles.cardStyle}>
       <Image
         style={styles.imageStyle}
         source={require("../assets/food.jpg")}
       ></Image>
-      <Text style={{ fontWeight: "bold", alignSelf: "left", margin: 5 }}>
+      <Text style={{ fontWeight: "bold", margin: 5 }}>
         Riyaj Restaurant & Spa
       </Text>
       <Text style={{ color: "black", margin: 3 }}>$1.49 Delivery Fee</Text>
-    </SafeAreaView>
+    </TouchableOpacity>
   );
 };
 
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     height: 170,
     // borderWidth: 1,
     borderColor: "black",
-    backgroundColor: "pink",
+    backgroundColor: "white",
     shadowOffset: { width: 10, height: 10 },
     shadowColor: "gray",
     shadowOpacity: 0.5,
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     height: 120,
     width: 200,
     // flex: 1,
-    borderRadius: 10,
+    borderRadius: 5,
   },
 });
 

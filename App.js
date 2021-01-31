@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Text, TextInput, SafeAreaView, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
+import DetailScreen from "./screens/DetailScreen";
 
 const Stack = createStackNavigator();
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="DetailScreen" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
