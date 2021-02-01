@@ -2,8 +2,9 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import TitleComponent from "../components/TitleComponent";
 import CardComponent from "../components/CardComponent";
+import { withNavigation } from "react-navigation";
 
-const ResultsList = ({ results, navigation, title }) => {
+const ResultsList = ({ results, title, navigation }) => {
   const data = results;
   return (
     <View>
@@ -20,8 +21,9 @@ const ResultsList = ({ results, navigation, title }) => {
               title={item.name}
               key={item.id}
               navigate={() => {
-                console.log("Pressed");
-                navigation.navigate("DetailScreen");
+                navigation.navigate("DetailScreen", {
+                  id: item.id,
+                });
               }}
             />
           );
@@ -37,6 +39,13 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     flexDirection: "row",
   },
+
+  imageStyle: {
+    height: 120,
+    width: 200,
+    // flex: 1,
+    borderRadius: 5,
+  },
 });
 
-export default ResultsList;
+export default withNavigation(ResultsList);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../src/hooks/useResults";
@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
+    <>
       <SearchBar
         onTermSubmit={() => searchApi(term)}
         term={term}
@@ -24,26 +24,28 @@ const HomeScreen = ({ navigation }) => {
           setTerm(newTerm);
         }}
       />
-      <Text>{errorMessage}</Text>
+      <ScrollView>
+        <Text>{errorMessage}</Text>
 
-      <View style={styles.border}></View>
+        <View style={styles.border}></View>
 
-      <ResultsList
-        navigation={navigation}
-        title="Cheap Restaurants"
-        results={filterResultsByPrice("$")}
-      />
-      <ResultsList
-        navigation={navigation}
-        title="Bit Pricier"
-        results={filterResultsByPrice("$$")}
-      />
-      <ResultsList
-        navigation={navigation}
-        title="Big Spender"
-        results={filterResultsByPrice("$$$")}
-      />
-    </ScrollView>
+        <ResultsList
+          navigation={navigation}
+          title="Cheap Restaurants"
+          results={filterResultsByPrice("$")}
+        />
+        <ResultsList
+          navigation={navigation}
+          title="Bit Pricier"
+          results={filterResultsByPrice("$$")}
+        />
+        <ResultsList
+          navigation={navigation}
+          title="Big Spender"
+          results={filterResultsByPrice("$$$")}
+        />
+      </ScrollView>
+    </>
   );
 };
 
