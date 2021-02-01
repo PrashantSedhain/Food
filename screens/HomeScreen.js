@@ -1,100 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
-import CardComponent from "../components/CardComponent";
 import SearchBar from "../components/SearchBar";
-import yelp from "../src/api/yelp";
-import TitleComponent from "../components/TitleComponent";
+import useResults from "../src/hooks/useResults";
+import ResultsList from "../components/ResultsList";
 
 const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
-  const [results, setResults] = useState([]);
+  const [searchApi, results, errorMessage] = useResults();
 
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const data = [1, 2, 3, 4, 5, 6];
-
-  const searchApi = async () => {
-    try {
-      const response = await yelp.get("/search", {
-        params: {
-          limit: 20,
-          term,
-          location: "san jose",
-        },
-      });
-      setResults(response.data.businesses);
-    } catch (err) {
-      setErrorMessage("Something went wrong");
-    }
+  const filterResultsByPrice = (price) => {
+    // price === '$ || "$$" or '$$$'
+    return results.filter((result) => {
+      return result.price === price;
+    });
   };
 
   return (
     <ScrollView>
       <SearchBar
-        onTermSubmit={() => searchApi()}
+        onTermSubmit={() => searchApi(term)}
         term={term}
         onTermChange={(newTerm) => {
           setTerm(newTerm);
         }}
       />
-      <Text>We found {results.length} restaurants.</Text>
       <Text>{errorMessage}</Text>
-      <TitleComponent title="Cheap Restaurants" />
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.viewStyle}
-      >
-        {data.map((item) => {
-          return (
-            <CardComponent
-              key={item}
-              navigate={() => {
-                navigation.navigate("DetailScreen");
-              }}
-            />
-          );
-        })}
-      </ScrollView>
 
       <View style={styles.border}></View>
 
-      <TitleComponent title="Expensive Restaurants" />
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.viewStyle}
-      >
-        {data.map((item) => {
-          return (
-            <CardComponent
-              navigate={() => {
-                navigation.navigate("DetailScreen");
-              }}
-              key={item}
-            />
-          );
-        })}
-      </ScrollView>
-      <View style={styles.border}></View>
-
-      <TitleComponent title="Luxury Restaurants" />
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.viewStyle}
-      >
-        {data.map((item) => {
-          return (
-            <CardComponent
-              key={item}
-              navigate={() => {
-                navigation.navigate("DetailScreen");
-              }}
-            />
-          );
-        })}
-      </ScrollView>
+      <ResultsList
+        title="Cheap Restaurants"
+        results={filterResultsByPrice("$")}
+      />
+      <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
+      <ResultsList title="Big Spender" results={filterResultsByPrice("$$$")} />
     </ScrollView>
   );
 };

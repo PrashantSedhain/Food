@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 20,
     fontWeight: "bold",
-    margin: 4,
+    margin: 10,
     color: "black",
   },
 });

@@ -11,16 +11,15 @@ import {
 // import { ScrollView } from "react-native-gesture-handler";
 
 const CardComponent = (props) => {
+  let Image_Http_URL = {
+    uri: props.imageURL,
+  };
+
   return (
     <TouchableOpacity onPress={props.navigate} style={styles.cardStyle}>
-      <Image
-        style={styles.imageStyle}
-        source={require("../assets/food.jpg")}
-      ></Image>
-      <Text style={{ fontWeight: "bold", margin: 5 }}>
-        Riyaj Restaurant & Spa
-      </Text>
-      <Text style={{ color: "black", margin: 3 }}>$1.49 Delivery Fee</Text>
+      <Image style={styles.imageStyle} source={Image_Http_URL}></Image>
+      <Text style={{ fontWeight: "bold", margin: 5 }}>{props.title}</Text>
+      {/* <Text style={{ color: "black", margin: 3 }}>$1.49 Delivery Fee</Text> */}
     </TouchableOpacity>
   );
 };
