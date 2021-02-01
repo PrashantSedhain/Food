@@ -3,11 +3,11 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import TitleComponent from "../components/TitleComponent";
 import CardComponent from "../components/CardComponent";
 
-const ResultsList = (props) => {
-  const data = props.results;
+const ResultsList = ({ results, navigation, title }) => {
+  const data = results;
   return (
     <View>
-      <TitleComponent title={props.title} />
+      <TitleComponent title={title} />
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -20,6 +20,7 @@ const ResultsList = (props) => {
               title={item.name}
               key={item.id}
               navigate={() => {
+                console.log("Pressed");
                 navigation.navigate("DetailScreen");
               }}
             />

@@ -29,11 +29,20 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.border}></View>
 
       <ResultsList
+        navigation={navigation}
         title="Cheap Restaurants"
         results={filterResultsByPrice("$")}
       />
-      <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
-      <ResultsList title="Big Spender" results={filterResultsByPrice("$$$")} />
+      <ResultsList
+        navigation={navigation}
+        title="Bit Pricier"
+        results={filterResultsByPrice("$$")}
+      />
+      <ResultsList
+        navigation={navigation}
+        title="Big Spender"
+        results={filterResultsByPrice("$$$")}
+      />
     </ScrollView>
   );
 };
