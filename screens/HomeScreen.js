@@ -24,24 +24,27 @@ const HomeScreen = ({ navigation }) => {
           setTerm(newTerm);
         }}
       />
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.scrollViewStyle}
+      >
         <Text>{errorMessage}</Text>
 
         <View style={styles.border}></View>
 
         <ResultsList
           navigation={navigation}
-          title="Cheap Restaurants"
+          title="Recently Viewed"
           results={filterResultsByPrice("$")}
         />
         <ResultsList
           navigation={navigation}
-          title="Bit Pricier"
+          title="Popular Events"
           results={filterResultsByPrice("$$")}
         />
         <ResultsList
           navigation={navigation}
-          title="Big Spender"
+          title="Happening Nearby"
           results={filterResultsByPrice("$$$")}
         />
       </ScrollView>
@@ -58,7 +61,11 @@ const styles = StyleSheet.create({
 
   border: {
     borderWidth: 0.8,
-    borderColor: "gray",
+    borderColor: "#dedbd9",
+  },
+
+  scrollViewStyle: {
+    marginHorizontal: 8,
   },
 });
 

@@ -35,7 +35,7 @@ const ResultsList = ({ results, title, navigation }) => {
 
 const styles = StyleSheet.create({
   viewStyle: {
-    height: 200,
+    height: 220,
     // borderWidth: 1,
     flexDirection: "row",
   },

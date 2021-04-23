@@ -8,9 +8,11 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
       style={{
         flexDirection: "row",
         margin: 10,
-        height: 50,
+        height: 45,
         marginTop: 10,
-        backgroundColor: "gray",
+        marginHorizontal: 10,
+        borderColor: "black",
+        backgroundColor: "#c2bcbc",
         borderRadius: 10,
       }}
     >
@@ -27,7 +29,7 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
         onChangeText={(newTerm) => onTermChange(newTerm)}
         value={term}
         style={styles.inputStyle}
-        placeholder="Search Restaurants"
+        placeholder="Search Events, Venues"
         placeholderTextColor="white"
       />
     </View>

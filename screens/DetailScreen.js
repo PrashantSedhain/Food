@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import yelp from "../src/api/yelp";
 
@@ -27,15 +27,17 @@ const DetailScreen = (props) => {
     return null;
   } else {
     return (
-      <FlatList
-        data={result.photos}
-        keyExtractor={(photo) => photo}
-        renderItem={({ item }) => {
-          return (
-            <Image style={styles.imageStyle} source={{ uri: item }}></Image>
-          );
-        }}
-      ></FlatList>
+      <SafeAreaView>
+        <FlatList
+          data={result.photos}
+          keyExtractor={(photo) => photo}
+          renderItem={({ item }) => {
+            return (
+              <Image style={styles.imageStyle} source={{ uri: item }}></Image>
+            );
+          }}
+        ></FlatList>
+      </SafeAreaView>
     );
   }
 };
