@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Text, TextInput, SafeAreaView, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-import DetailScreen from "./screens/DetailScreen";
+import ViewAllScreen from "./screens/ViewAllScreen";
 
 const Stack = createStackNavigator();
 function App() {
@@ -31,7 +31,7 @@ function App() {
             headerShown: false,
           }}
           options={{
-            title: "Event Details",
+            title: "View All",
             headerStyle: {
               backgroundColor: "#f4511e",
             },
@@ -43,8 +43,8 @@ function App() {
             headerTitleAlign: "center",
           }}
           // options={{ headerShown: false }}
-          name="DetailScreen"
-          component={DetailScreen}
+          name="ViewAllScreen"
+          component={ViewAllScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

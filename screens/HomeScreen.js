@@ -3,8 +3,11 @@ import { View, StyleSheet, Text, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../src/hooks/useResults";
 import ResultsList from "../components/ResultsList";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const HomeScreen = ({ navigation }) => {
+  const Tab = createBottomTabNavigator();
+
   const [term, setTerm] = useState("");
   const [searchApi, results, errorMessage] = useResults();
 
@@ -17,6 +20,10 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <>
+      {/* <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={HomeScreen} />
+      </Tab.Navigator> */}
       <SearchBar
         onTermSubmit={() => searchApi(term)}
         term={term}

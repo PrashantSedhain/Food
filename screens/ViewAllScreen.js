@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import CardComponent from "../components/CardComponent";
+
 import yelp from "../src/api/yelp";
 
-const DetailScreen = (props) => {
+const ViewAllScreen = (props) => {
   const [result, setResult] = useState(null);
   const id = props.route.params.id;
 
@@ -27,13 +29,26 @@ const DetailScreen = (props) => {
     return null;
   } else {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{ justifyContent: "center", alignItems: "center" }}>
         <FlatList
           data={result.photos}
           keyExtractor={(photo) => photo}
           renderItem={({ item }) => {
             return (
-              <Image style={styles.imageStyle} source={{ uri: item }}></Image>
+              <View>
+                <CardComponent
+                  imageURL={item}
+                  title={item.name}
+                  key={item.id}
+                  viewAll={true}
+                  // navigate={() => {
+                  //   navigation.navigate("DetailScreen", {
+                  //     id: item.id,
+                  //   });
+                  // }}
+                />
+                <View style={styles.border}></View>
+              </View>
             );
           }}
         ></FlatList>
@@ -54,6 +69,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     margin: 8,
   },
+  border: {
+    borderWidth: 0.8,
+    borderColor: "#dedbd9",
+    marginBottom: 5,
+  },
 });
 
-export default DetailScreen;
+export default ViewAllScreen;

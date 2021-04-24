@@ -1,8 +1,18 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Button } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const TitleComponent = (props) => {
-  return <Text style={styles.titleStyle}>{props.title}</Text>;
+  return (
+    <View style={styles.viewStyle}>
+      <Text style={styles.titleStyle}>{props.title}</Text>
+      <TouchableOpacity>
+        <View style={{ display: "flex" }}>
+          <Text style={styles.buttonStyle}>See All</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -11,6 +21,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     margin: 10,
     color: "black",
+  },
+
+  viewStyle: {
+    flexDirection: "row",
+    // borderWidth: 1,
+    borderColor: "black",
+    display: "flex",
+  },
+
+  buttonStyle: {
+    fontSize: 15,
+    margin: 10,
+    marginTop: 14,
+    flexDirection: "row",
+    alignSelf: "flex-end",
   },
 });
 

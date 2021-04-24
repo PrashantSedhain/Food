@@ -4,7 +4,7 @@ import TitleComponent from "../components/TitleComponent";
 import CardComponent from "../components/CardComponent";
 import { withNavigation } from "react-navigation";
 
-const ResultsList = ({ results, title, navigation }) => {
+const ResultsList = ({ results, title, navigation, page }) => {
   const data = results;
   return (
     <View>
@@ -21,7 +21,7 @@ const ResultsList = ({ results, title, navigation }) => {
               title={item.name}
               key={item.id}
               navigate={() => {
-                navigation.navigate("DetailScreen", {
+                navigation.navigate("ViewAllScreen", {
                   id: item.id,
                 });
               }}
