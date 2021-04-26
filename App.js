@@ -1,52 +1,14 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Text, TextInput, SafeAreaView, View } from "react-native";
-import HomeScreen from "./screens/HomeScreen";
-import ViewAllScreen from "./screens/ViewAllScreen";
 
-const Stack = createStackNavigator();
+import BottomTabNavigator from "./navigation/TabNavigator";
+
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerTitleAlign: "left" }}>
-        <Stack.Screen
-          options={{
-            title: "Home",
-            headerStyle: {
-              backgroundColor: "#f4511e",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: 25,
-            },
-          }}
-          name="Home"
-          component={HomeScreen}
-        />
-        <Stack.Screen
-          screenOptions={{
-            headerShown: false,
-          }}
-          options={{
-            title: "View All",
-            headerStyle: {
-              backgroundColor: "#f4511e",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: null,
-            },
-            headerTitleAlign: "center",
-          }}
-          // options={{ headerShown: false }}
-          name="ViewAllScreen"
-          component={ViewAllScreen}
-        />
-      </Stack.Navigator>
+      <BottomTabNavigator />
     </NavigationContainer>
   );
 }

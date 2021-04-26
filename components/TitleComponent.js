@@ -6,11 +6,13 @@ const TitleComponent = (props) => {
   return (
     <View style={styles.viewStyle}>
       <Text style={styles.titleStyle}>{props.title}</Text>
-      <TouchableOpacity onPress={props.navigate}>
-        <View style={{ display: "flex" }}>
-          <Text style={styles.buttonStyle}>See All</Text>
-        </View>
-      </TouchableOpacity>
+      {props.viewAll ? (
+        <TouchableOpacity onPress={props.navigate}>
+          <View style={{ display: "flex" }}>
+            <Text style={styles.buttonStyle}>See All</Text>
+          </View>
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 };

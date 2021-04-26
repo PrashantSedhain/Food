@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../src/hooks/useResults";
 import ResultsList from "../components/ResultsList";
+import TitleComponent from "../components/TitleComponent";
 
 const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
@@ -15,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <>
+    <SafeAreaView>
       <SearchBar
         onTermSubmit={() => searchApi(term)}
         term={term}
@@ -54,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
           results={filterResultsByCategory("Theater")}
         />
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
 
   scrollViewStyle: {
     marginHorizontal: 8,
+    marginBottom: 60,
   },
 });
 
