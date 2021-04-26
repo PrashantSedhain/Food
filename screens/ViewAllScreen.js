@@ -7,7 +7,6 @@ import yelp from "../src/api/yelp";
 
 const ViewAllScreen = (props) => {
   const [result, setResult] = useState(null);
-  const id = props.route.params.id;
 
   let counter = 0;
 
