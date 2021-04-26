@@ -1,12 +1,12 @@
+import axios from "axios";
 import React from "react";
 import { View, StyleSheet, Text, Button } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
 const TitleComponent = (props) => {
   return (
     <View style={styles.viewStyle}>
       <Text style={styles.titleStyle}>{props.title}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.navigate}>
         <View style={{ display: "flex" }}>
           <Text style={styles.buttonStyle}>See All</Text>
         </View>

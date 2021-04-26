@@ -4,25 +4,32 @@ import TitleComponent from "../components/TitleComponent";
 import CardComponent from "../components/CardComponent";
 import { withNavigation } from "react-navigation";
 
-const ResultsList = ({ results, title, navigation, page }) => {
+const ResultsList = ({ results, title, navigation }) => {
   const data = results;
   return (
     <View>
-      <TitleComponent title={title} />
+      <TitleComponent
+        title={title}
+        navigate={() => {
+          navigation.navigate("ViewAllScreen", {
+            id: item.id,
+          });
+        }}
+      />
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={styles.viewStyle}
       >
-        {data.map((item) => {
+        {Object.values(data).map((item) => {
           return (
             <CardComponent
-              imageURL={item.image_url}
-              title={item.name}
-              key={item.id}
+              imageURL={item.coverImage}
+              title={item.title}
+              key={item._id}
               navigate={() => {
                 navigation.navigate("ViewAllScreen", {
-                  id: item.id,
+                  id: item._id,
                 });
               }}
             />

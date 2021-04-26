@@ -28,8 +28,7 @@ const CardComponent = (props) => {
           Fri, Jul 23, 2021 - 12:59 pm
         </Text>
         <Text style={{ fontWeight: "bold", marginTop: 3, color: "black" }}>
-          Rolling loud music festival outside Rangasala with Bipul Chettri,
-          Swo...
+          {props.title}
         </Text>
         <Text style={{ fontWeight: "bold", marginTop: 3, color: "#c4c4c4" }}>
           Gongabu, Kathmandu
