@@ -18,6 +18,7 @@ const CardComponent = (props) => {
     <TouchableOpacity
       onPress={props.navigate}
       style={props.viewAll ? styles.cardStyle2 : styles.cardStyle}
+      activeOpacity={1}
     >
       <Image
         style={props.viewAll ? styles.imageStyle2 : styles.imageStyle}
@@ -30,7 +31,7 @@ const CardComponent = (props) => {
         <Text style={{ fontWeight: "bold", marginTop: 3, color: "black" }}>
           {props.title}
         </Text>
-        <Text style={{ fontWeight: "bold", marginTop: 3, color: "#c4c4c4" }}>
+        <Text style={{ fontWeight: "bold", marginTop: 3, color: "#878787" }}>
           Gongabu, Kathmandu
         </Text>
       </View>
