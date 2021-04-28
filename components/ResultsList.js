@@ -3,7 +3,6 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import TitleComponent from "../components/TitleComponent";
 import CardComponent from "../components/CardComponent";
 import { withNavigation } from "react-navigation";
-
 const ResultsList = ({ results, title, navigation }) => {
   const data = results;
   return (
@@ -11,9 +10,7 @@ const ResultsList = ({ results, title, navigation }) => {
       <TitleComponent
         title={title}
         navigate={() => {
-          navigation.navigate("ViewAllScreen", {
-            id: item.id,
-          });
+          navigation.navigate("ViewAllScreen");
         }}
       />
       <ScrollView
@@ -28,7 +25,7 @@ const ResultsList = ({ results, title, navigation }) => {
               title={item.title}
               key={item._id}
               navigate={() => {
-                navigation.navigate("ViewAllScreen", {
+                navigation.navigate("EventDetailScreen", {
                   id: item._id,
                 });
               }}

@@ -3,7 +3,6 @@ import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../src/hooks/useResults";
 import ResultsList from "../components/ResultsList";
-import TitleComponent from "../components/TitleComponent";
 
 const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
