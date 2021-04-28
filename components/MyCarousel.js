@@ -42,9 +42,6 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: "center",
   },
-  scrollVIewStyle: {
-    margin: 6,
-  },
 });
 
 export default MyCarousel;
